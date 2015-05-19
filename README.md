@@ -1,4 +1,5 @@
 Rudyard Richter
+
 CS 223, Exercise 10: Stanford Lab 1, Globber
 
 Globber
@@ -7,13 +8,11 @@ Globber
 A simple globber function written in Haskell,
 with tests using [hspec](http://hspec.github.io/).
 
-You will write a simple function that performs [glob
-matching](http://en.wikipedia.org/wiki/Glob_%28programming%29) Glob
-matching is a simple form of pattern matching (i.e., regular
-expressions but greatly reduced).
 
 Usage
 -----
+
+Setting up a cabal sandbox to run it in:
 
     $ cabal sandbox init
     $ cabal install --only-dependencies --enable-tests
@@ -23,6 +22,7 @@ Usage
 Run tests with
 
     $ cabal test
+
 
 Glob Matching
 -------------
