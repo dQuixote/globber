@@ -1,3 +1,8 @@
+-- globber.hs
+-- Rudyard Richter
+-- CS 223, Exercise 10: Globber
+-- https://github.com/dQuixote/globber
+
 module Globber (matchGlob) where
 
 import Data.List (subsequences, tails)
