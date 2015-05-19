@@ -16,15 +16,21 @@ main = hspec $ describe "Testing Globber" $ do
         it "should match literal characters" $
             matchGlob "a" "a" `shouldBe` True
         it "should match longer strings" $
-            matchGlob "~!@#$%^&" "~!@#$%^&" `shouldBe` True
+            matchGlob "quick brown fox" "quick brown fox" `shouldBe` True
+        it "should not match unequal strings" $
+            matchGlob "quick brown fox" "lazy dog" `shouldBe` False
 
     describe "question mark cases" $ do
         it "matches any single character" $
             matchGlob "?" "*" `shouldBe` True
         it "matches any character within a longer string" $
             matchGlob "?s" "xs" `shouldBe` True
+        it "should not match empty string" $
+            matchGlob "?" "" `shouldBe` False
 
     describe "star cases" $ do
+        it "matches the empty string" $
+            matchGlob "*" "" `shouldBe` True
         it "matches any other string" $
             matchGlob "*" "quick brown fox" `shouldBe` True
         it "matches beginning substrings" $

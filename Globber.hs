@@ -18,6 +18,24 @@ matchGlob ('*':xs) ys = any (matchGlob xs) (tails ys)
 matchGlob (x:xs) (y:ys) = x == y && matchGlob xs ys
 
 {-
+ - prettier, but maybe slightly less clear
+matchGlob glob str
+    | null glob = null str
+    | null str  = glob == "*"
+    | glob == "?" = length str == 1
+    | [x] <- glob
+    , [y] <- str
+    = x == y
+matchGlob (x:xs) (y:ys) = case x of
+    '\\' -> let x' = head xs
+                xs' = tail xs
+            in x' == y && matchGlob xs' ys
+    '?'  -> matchGlob xs ys
+    '*'  -> any (matchGlob xs) (tails (y:ys))
+    x    -> x == y && matchGlob xs ys
+ -}
+
+{-
  - toying with set matching
 matchSet :: GlobPattern -> String -> Bool
 matchSet [] _ = False
